@@ -36,13 +36,13 @@
                         <div class="my-carousel-images">
                             <img :src="element.url">
                         </div>
-                        <div class="my-thumbnails position-relative">
+                        <div class="my-thumbnails position-relative" @mouseover="stop" @mouseleave="autoNext">
                             <!-- prev -->
                             <div class="my-previous position-absolute" @click="swipePrevious">
                                 <span class="my-prev-hook"></span>
                             </div>
                             <!-- immagini interne -->
-                            <div class="my-thumbnail-preview" :class="(index == counter) ? 'viewing' : ''" v-for="(element,index) in images" >
+                            <div class="my-thumbnail-preview" :class="(index == counter) ? 'viewing' : ''" v-for="(element,index) in images" @click="counter=index">
                                 <img :src="element.url" alt="element.title" >
                             </div>
                             <!-- next -->

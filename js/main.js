@@ -4,6 +4,8 @@ const app = new Vue({
     el : '#app',
     data : {
         counter : 0,
+        intervalId : null,
+
         images : [
             {
                 url : 'https://getwallpapers.com/wallpaper/full/4/4/b/1178094-gorgerous-sweden-desktop-wallpaper-1920x1200-windows-10.jpg',
@@ -48,6 +50,15 @@ const app = new Vue({
                 }else if(this.counter >= this.images.length-1){
                     this.counter = 0;
                 }
-            }
+            },
+
+            autoNext(){
+                this.intervalId = setInterval(this.swipeNext,3000);
+            },
+
+            stop(){
+                clearInterval(this.intervalId);
+                console.log(this.intervalId)
+            },
     }
 })
