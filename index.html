@@ -22,39 +22,39 @@
 
     <title>Carousel x Vue</title>
 </head>
+
 <body>
-    
     <main id="app">
         <div class="container-fluid p-5">
             <div class="row text-center">
-                <div class="col-12 p-3" id="my-before-carousel">
-
-                </div>
-
                 <div class="col-12 p-5">
+
                     <div class="my-carousel-container d-flex flex-column" v-if="counter == index" v-for="(element,index) in images">
+                        
                         <div class="my-carousel-images">
                             <img :src="element.url">
+                            <div>
+                                <h1>{{element.title}}</h1>
+                                <p>{{element.description}}</p>
+                            </div>
                         </div>
+
                         <div class="my-thumbnails position-relative" @mouseover="stop" @mouseleave="autoNext">
-                            <!-- prev -->
+
                             <div class="my-previous position-absolute" @click="swipePrevious">
                                 <span class="my-prev-hook"></span>
                             </div>
-                            <!-- immagini interne -->
+
                             <div class="my-thumbnail-preview" :class="(index == counter) ? 'viewing' : ''" v-for="(element,index) in images" @click="counter=index">
                                 <img :src="element.url" alt="element.title" >
                             </div>
-                            <!-- next -->
+
                             <div class="my-next position-absolute" @click="swipeNext">
                                 <span class="my-next-hook"></span>
                             </div>
                         </div>
+
                     </div>
-                </div>
-
-                <div class="col-12 p-3" id="my-after-carousel">
-
                 </div>
             </div>
         </div>
