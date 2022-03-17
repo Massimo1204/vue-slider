@@ -4,7 +4,6 @@ const app = new Vue({
     el : '#app',
     data : {
         counter : 0,
-        viewing : 'viewing',
         images : [
             {
                 url : 'https://getwallpapers.com/wallpaper/full/4/4/b/1178094-gorgerous-sweden-desktop-wallpaper-1920x1200-windows-10.jpg',

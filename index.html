@@ -42,7 +42,7 @@
                                 <span class="my-prev-hook"></span>
                             </div>
                             <!-- immagini interne -->
-                            <div class="my-thumbnail-preview" :class="viewing" v-for="(element,index) in images" >
+                            <div class="my-thumbnail-preview" :class="(index == counter) ? 'viewing' : ''" v-for="(element,index) in images" >
                                 <img :src="element.url" alt="element.title" >
                             </div>
                             <!-- next -->
