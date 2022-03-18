@@ -5,6 +5,8 @@ const app = new Vue({
     data : {
         counter : 0,
         intervalId : null,
+        scrollDelay : 3000,
+        autoScrollRight : true,
 
         images : [
             {
@@ -52,13 +54,21 @@ const app = new Vue({
                 }
             },
 
-            autoNext(){
-                this.intervalId = setInterval(this.swipeNext,3000);
+            autoScroll(){
+                if(this.autoScrollRight) this.intervalId = setInterval(this.swipeNext,this.scrollDelay);
+                else this.intervalId = setInterval(this.swipePrevious,this.scrollDelay);
+            },
+
+            invertScroll(){
+                if(this.autoScrollRight) this.autoScrollRight = false;
+                else this.autoScrollRight = true;
+                this.stop();
+                this.autoScroll();
             },
 
             stop(){
                 clearInterval(this.intervalId);
-                console.log(this.intervalId)
+                this.intervalId=null;
             },
     }
 })

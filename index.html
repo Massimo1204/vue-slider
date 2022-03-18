@@ -28,9 +28,7 @@
         <div class="container-fluid p-5">
             <div class="row text-center">
                 <div class="col-12 p-5">
-
                     <div class="my-carousel-container d-flex flex-column" v-if="counter == index" v-for="(element,index) in images">
-                        
                         <div class="my-carousel-images">
                             <img :src="element.url">
                             <div>
@@ -39,8 +37,7 @@
                             </div>
                         </div>
 
-                        <div class="my-thumbnails position-relative" @mouseover="stop" @mouseleave="autoNext">
-
+                        <div class="my-thumbnails position-relative" @mouseover="stop" @mouseleave="autoScroll">
                             <div class="my-previous position-absolute" @click="swipePrevious">
                                 <span class="my-prev-hook"></span>
                             </div>
@@ -53,7 +50,17 @@
                                 <span class="my-next-hook"></span>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="my-after-carousel p-5">
+                        <button class="btn btn-primary fw-bold" v-if="intervalId==null" @click="autoScroll">Play</button>
+                        <button class="btn btn-danger fw-bold" v-else @click="stop">Stop</button>
+
+                        <button class="btn btn-info fw-bold ms-4" @click="invertScroll">Invert Scroll Direction</button>
+                        <div class="m-4">
+                            <h4>Select scroll time delay (milliseconds)</h4>
+                            <input class="block" type="number" v-model="scrollDelay" @keydown.enter="stop" @keyup.enter="autoScroll">
+                        </div>
                     </div>
                 </div>
             </div>
